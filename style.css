@@ -6,13 +6,14 @@
   
 }
 
-.container{
-    margin: 0;
-    position: absolute;
+.codeQuiz .quiz{
+    margin: auto;
+    width: 50%;
     text-align: center;
+
 }
 
-.col-md-8, .col-md{
+ .col-md{
     padding-top: 10%;
     text-align: center;
 }
@@ -30,9 +31,6 @@ li{
     margin-left: 10%;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    border: 3px solid purple;
-  
-    
+    width: 50%;   
     
 }

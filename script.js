@@ -1,13 +1,15 @@
 var startEl = document.querySelector("#start");
 console.log(startEl)
-var timerEl = document.querySelector("timer");
+var timerEl = document.querySelector("#timer");
+var secondsRemaining = 120;
 var clearEl = document.querySelector("#clear");
 var questionEl = document.querySelector(".question");
-var answerEl = document.querySelector("#answer");
-var submitEl = document.querySelector("#submit");
-var homeEl = document.querySelector(".cq");
+var answerEl = document.querySelector(".answers");
+// var submitEl = document.querySelector("#submit");
+var homeEl = document.querySelector(".codeQuiz");
 var liEl = document.querySelectorAll("li");
 console.log(liEl);
+var resultsEl = document.querySelector("#results");
 
 // create a constant array variable that holds question objects with details of questions, choices and answer
 const quiz = [
@@ -53,9 +55,18 @@ const quiz = [
     },
      ];
    
-// I need to put in a form when they are done the quiz to submit their highs score.I am not sure where that form goes, in the html? the form will have a submit button 
-// so I will give that an event listener 
-
+function setTime() {
+    var timerInterval = setInterval(function(){
+        secondsRemaining --;
+        timerEl.textContent="";
+        timerEl.textContent="Time " + secondsRemaining;
+        if(secondsRemaining <=0 || questionIndex === answers.length){
+            clearInterval(timerInterval);
+            userScore();
+        }
+    }, 1000);
+    
+} 
 var questionIndex = 0;
  
 //when the quiz is started I have to remove the display none css setting so that the questions can be seen
@@ -63,7 +74,8 @@ function startQuiz(){
 console.log("start");  
 homeEl.textContent = "";
 questionEl.textContent = quiz[questionIndex].question
-console.log(Object.values(quiz[questionIndex].choices))
+
+//since I have an object in my array I used Object.values to convert them into an array
 var answers = Object.values(quiz[questionIndex].choices);
 
 for(i =0; i<answers.length; i++){
@@ -71,26 +83,40 @@ for(i =0; i<answers.length; i++){
     console.log(liEl[i]);
     liEl[i].textContent = answers[i];
 
-    liEl[i].addEventListener("click",rightOrWrong); 
-
+    liEl[i].addEventListener("click",feedback); 
 }
-
 };
 
-function rightOrWrong(event){
+function feedback(event){
     console.log(event.target)
 
     console.log (event.target.textContent)
 
+    var feedback = document.createElement("div");
+    var pEl = document.createElement("p");
+
+    feedback.setAttribute("class", feedback);
+    feedback.appendChild(pEl);
+    answerEl.appendChild(feedback);
+    
+  // if statement to determine whether correct or incorrect will print.
     if(event.target.textContent === quiz[questionIndex].answer){
         console.log("correct");
+        pEl.textContent = "Correct !"
+
        
     }
     else{
 
+        pEl.textContent ="Wrong!";
+        if (secondsRemaining <= 15){
+            secondsRemaining = 0;
+        }
+        else{
+            secondsRemaining -= 15;
+        }
     }
-       
-    };
+ };
 
 //event listener that will start the code 
 startEl.addEventListener("click", startQuiz);
@@ -101,9 +127,12 @@ startEl.addEventListener("click", startQuiz);
 
 // });
 
-// //how can I create the "wrong!" notification
 
-// // I also need to figure out the timer, how to get it to decrement correctly
+function userScore(){
+    timerEl.remove;
+    resultsEl.innerHTML = "";
+
+}
 
 // submitEl.addEventListener("click", function(){
 
