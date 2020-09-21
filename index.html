@@ -12,28 +12,50 @@
     <title>Code Quiz</title>
   </head>
   <body>
-    <div class = "container">
+    <!--homepage-->
+    <div class = "container" id ="home">
          <div class = "row">
             <div class = "col-md-2">
                <button type = "button" class = "btn btn-info"><a href = highscore.html>High Scores</a></button>
             </div>
-            <div class = "col-md-8">
+            <div class = "col-md-8 cq " >
                 <h1 id = "h1">Code Quiz Challenge</h1>
                 <p>Try to answer the following code-related questions within the given time limit.
                 Keep in mind that incorrect answers will cause you to lose some time which will 
                 affect your score by 10 seconds </p>
-                <button type="button" class="btn btn-info">Start Quiz</button>
+                <button type="button" class="btn btn-info" id ="start">Start Quiz</button>
             </div>
             <div class = "col-md-2">
-                <p id ="timer">Timer:</p>
+                <p id ="timer"></p>
             </div>
         </div>
-            <!-- <div class = "row">
-                <div class ="col-md">
-                    
-                </div>
-            </div> -->
     </div>
+    
+    <!--create a placeholder for the questions to show up on screen,  but how can I be sure that when my questions start they will be loaded in correctly?-->
+    <div class = "container" id ="quiz">
+      <div class = "row">
+        <div class ="col-md-10">
+          <h2 class = "question"></h2>
+          <ul class ="answers">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- placeholder for the final screen where the user inputs their initials
+    <form class ="form" id ="end">
+      <div class="form-group">
+        <label for="initials">
+         <p>All Done!</p>
+          Enter your initials</label>
+        <input type="initial" class="form-control" id="initials">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form> -->
 
     <script src = script.js></script>
 
