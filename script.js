@@ -1,18 +1,19 @@
 var startEl = document.querySelector("#start");
 console.log(startEl)
-var timerEl = document.querySelector("#timer");
-var secondsRemaining = 120;
+var timer = document.querySelector("#timer");
+var secondsRemaining = 60;
 var clearEl = document.querySelector("#clear");
-var questionEl = document.querySelector(".question");
-var answerEl = document.querySelector(".answers");
-// var submitEl = document.querySelector("#submit");
+// var questionEl = document.querySelector(".question");
+// var answerEl = document.querySelector(".answers");
+var submitEl = document.querySelector("#submit");
 var homeEl = document.querySelector(".codeQuiz");
 var liEl = document.querySelectorAll("li");
 console.log(liEl);
 var resultsEl = document.querySelector("#results");
 
 // create a constant array variable that holds question objects with details of questions, choices and answer
-const quiz = [
+const quiz = 
+[
    {
      question: "Commonly used data types DO NOT include: ",
      choices:{
@@ -53,13 +54,14 @@ const quiz = [
         },
         answer:"quotes",
     },
-     ];
-   
-function setTime() {
+];
+
+function setTime() 
+{
     var timerInterval = setInterval(function(){
         secondsRemaining --;
-        timerEl.textContent="";
-        timerEl.textContent="Time " + secondsRemaining;
+        timer.textContent= "Time:" + secondsRemaining;
+        console.log(timer);
         if(secondsRemaining <=0 || questionIndex === answers.length){
             clearInterval(timerInterval);
             userScore();
@@ -71,7 +73,12 @@ var questionIndex = 0;
  
 //when the quiz is started I have to remove the display none css setting so that the questions can be seen
 function startQuiz(){
-console.log("start");  
+console.log("start"); 
+setTime(); 
+renderQuestions();
+};
+
+function renderQuestions(){
 homeEl.textContent = "";
 questionEl.textContent = quiz[questionIndex].question
 
@@ -85,9 +92,11 @@ for(i =0; i<answers.length; i++){
 
     liEl[i].addEventListener("click",feedback); 
 }
+ questionIndex ++;
 };
 
-function feedback(event){
+function feedback(event)
+{
     console.log(event.target)
 
     console.log (event.target.textContent)
@@ -100,14 +109,13 @@ function feedback(event){
     answerEl.appendChild(feedback);
     
   // if statement to determine whether correct or incorrect will print.
-    if(event.target.textContent === quiz[questionIndex].answer){
+    if(event.target.textContent === quiz[questionIndex].answer)
+    {
         console.log("correct");
-        pEl.textContent = "Correct !"
-
-       
+        pEl.textContent = "Correct !"       
     }
-    else{
-
+    else
+    {
         pEl.textContent ="Wrong!";
         if (secondsRemaining <= 15){
             secondsRemaining = 0;
@@ -116,13 +124,12 @@ function feedback(event){
             secondsRemaining -= 15;
         }
     }
+    renderQuestions();
  };
 
 //event listener that will start the code 
 startEl.addEventListener("click", startQuiz);
 
-// //do I need an event listener so that when clicked it will go to the next question?
-// //also if they select the right answer it should display "correct" underneath.
 // answerEl.addEventListener("click", function(){
 
 // });
