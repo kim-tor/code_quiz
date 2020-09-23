@@ -1,12 +1,12 @@
 #h1{
     font-size: 50px;
-
+    text-align:center;
     font-weight: bold;
     color: #17a2b8;
   
 }
 
-.container{
+ .codeQuiz #quiz #results{
     margin: auto;
     width: 50%;
     text-align: center;
@@ -22,9 +22,6 @@ li{
     list-style-type:none;
 }
 
-#results{
-    display : none;
-}
 .form{
     margin-top: 10%;
     margin-left: 10%;

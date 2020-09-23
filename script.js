@@ -6,6 +6,7 @@ var clearEl = document.querySelector("#clear");
 var questionEl = document.querySelector(".question");
 var answerEl = document.querySelector(".answers");
 var submitEl = document.querySelector("#submit");
+console.log(submitEl);
 var homeEl = document.querySelector(".codeQuiz");
 var liEl = document.querySelectorAll("li");
 console.log(liEl);
@@ -56,8 +57,8 @@ const quiz =
         },
     ];
 
-    var questionIndex = 0;
-    var answers = Object.values(quiz[questionIndex].choices);
+var questionIndex = 0;
+var answers = Object.values(quiz[questionIndex].choices);
 
 function setTime() {
     var timerInterval = setInterval(function () {
@@ -66,7 +67,7 @@ function setTime() {
         // console.log(timer);
         if (secondsRemaining <= 0 || questionIndex === answers.length) {
             clearInterval(timerInterval);
-            userScore();
+            setTimeout(userScore(), 60);
         }
     }, 1000);
 
@@ -85,7 +86,7 @@ function renderQuestions() {
     questionEl.textContent = quiz[questionIndex].question
 
     //since I have an object in my array I used Object.values to convert them into an array
-    
+
     answers = Object.values(quiz[questionIndex].choices);
     for (var i = 0; i < answers.length; i++) {
         console.log(answers[i]);
@@ -94,7 +95,6 @@ function renderQuestions() {
 
         liEl[i].addEventListener("click", feedback);
     }
-    
 };
 
 function feedback(event) {
@@ -129,16 +129,59 @@ function feedback(event) {
     renderQuestions();
 };
 
-//event listener that will start the code 
-startEl.addEventListener("click", startQuiz);
+// function done(){
+// var scores = localStorage.getItem("scores");
+// scores = JSON.parse(scores);
 
+// if (scores !== null){
+
+//     for (var i = 0; i<scores.length; i++){
+//         var newLi = document.createElement("li");
+//         newLi.textContent = scores[i].initials + "" + scores[i].score;
+//         highscore.appendChild(newLi);
+//     }
+// }
+// };
 
 //creating this function to end the quiz and have the form show up for them to fill out
 function userScore() {
-    timerEl.remove;
+    questionEl;
+    timer.remove;
+    console.log(timer);
+    document.getElementById("quiz").classList.add("d-none");
+    document.getElementById("results").classList.remove("d-none");
+    
+};
 
-}
+function addScore() {
+    initialInput = document.getElementById("initials").value;
+    console.log(initialInput);
+    var newScore = {
+        name: initialInput,
+        score: secondsRemaining,
+    };
+    console.log(newScore);
 
-// submitEl.addEventListener("click", function(){
+    var highScores = JSON.parse(localStorage.getItem(("highScore") || "[]"));
+    highScores.push(newScore);
+    console.log(highScores);
+    localStorage.setItem("highScore", JSON.stringify(highScores));
 
+};
+
+
+
+//event listener that will start the code 
+startEl.addEventListener("click", startQuiz);
+
+submitEl.addEventListener("click", function(event){
+    event.stopPropagation();
+    addScore();
+    
+    window.location.replace = "highscore.html";
+} );
+
+// clearEl.addEventListener("click", function(){
+//     localStorage.clear();
+//     localStorage.reload();
 // });
