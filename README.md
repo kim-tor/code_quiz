@@ -1,9 +1,8 @@
 # code_quiz
-<<<<<<< HEAD
-[Code Quiz]()
+
+[Code Quiz](https://kim-tor.github.io/code_quiz/.)
 =======
 
->>>>>>> eb6d26258e9008b733875f37a644ee67f488616c
 ![Image of Code Quiz](codequizimg.png)
 
 # Description
@@ -33,8 +32,6 @@ https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation
 https://www.w3schools.com/jsref/met_win_settimeout.asp
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values#:~:text=enumerable%20property%20values.-,Description,values%20of%20the%20object%20manually.
-<<<<<<< HEAD
 
 https://developer.mozilla.org/en-US/docs/Web/API/Location/replace
-=======
->>>>>>> eb6d26258e9008b733875f37a644ee67f488616c
+
