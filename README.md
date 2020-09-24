@@ -17,6 +17,11 @@ I used 3 containers to separte the start page, the quiz and the final form. Doin
 
 Using the id's that are assigned to each element I acess them in javascript and then created methods to start the quiz, render the question, take in the user's info , store the score and clear the score board (Side Note: not all of these were implemented successfully , there are things that need to be improved upon.)
 
+# Problems
+
+I ran into issues when I was trying to submit my highscore. I tried two different ways to get it to save the user's score however I wasn't able to successfully implement it. 
+What it does once the user clicks the submit button is refresh the page and start from the beginning. 
+My goal is to continue to review the class videos and class activities and see what I could have missed. I had a very difficult time trying to figure out where I went wrong.
 
 
 # Credits
