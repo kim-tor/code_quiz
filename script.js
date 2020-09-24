@@ -150,7 +150,6 @@ function userScore() {
     console.log(timer);
     document.getElementById("quiz").classList.add("d-none");
     document.getElementById("results").classList.remove("d-none");
-    
 };
 
 function addScore() {
