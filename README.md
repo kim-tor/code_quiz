@@ -1,6 +1,6 @@
 # code_quiz
 
-![Image of Code Quiz] ( codequizimg.png)
+![Image of Code Quiz](codequizimg.png)
 
 # Description
 
